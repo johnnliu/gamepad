@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<manifest>
+  <control namespace="GamePadNS" constructor="GamePadComponent" version="0.0.9" display-name-key="GamePadComponent" description-key="GamePadComponent description" control-type="standard">
+    <!--external-service-usage node declares whether this 3rd party PCF control is using external service or not, if yes, this control will be considered as premium and please also add the external domain it is using.
+    If it is not using any external service, please set the enabled="false" and DO NOT add any domain below. The "enabled" will be true by default.
+    Example1:
+      <external-service-usage enabled="true">
+        <domain>www.Microsoft.com</domain>
+      </external-service-usage>
+    Example2:
+      <external-service-usage enabled="false">
+      </external-service-usage>
+    -->
+    <external-service-usage enabled="false">
+      <!--UNCOMMENT TO ADD EXTERNAL DOMAINS
+      <domain></domain>
+      <domain></domain>
+      -->
+    </external-service-usage>
+    <!-- property node identifies a specific, configurable piece of data that the control expects from CDS -->
+    <property name="pad1_index" display-name-key="pad1_index_disp" description-key="pad1_index_desc" of-type="Whole.None" usage="bound" required="false" default-value="0" />
+    <property name="pad1Vibrate" display-name-key="pad1Vibrate_disp" description-key="pad1Vibrate_desc" of-type="Whole.None" usage="bound" required="false" />
+    <property name="pad1_id" display-name-key="pad1_id_disp" description-key="pad1_id_desc" of-type="SingleLine.Text" usage="bound" required="false" />
+    <property name="pad1_connected" display-name-key="pad1_connected_disp" description-key="pad1_connected_desc" of-type="TwoOptions" usage="bound" required="false" />
+
+    <property name="pad1_0X" display-name-key="pad1_0X_disp" description-key="pad1_0X_desc" of-type="Decimal" usage="bound" required="false" />
+    <property name="pad1_0Y" display-name-key="pad1_0Y_disp" description-key="pad1_0Y_desc" of-type="Decimal" usage="bound" required="false" />
+    <property name="pad1_1X" display-name-key="pad1_1X_disp" description-key="pad1_1X_desc" of-type="Decimal" usage="bound" required="false" />
+    <property name="pad1_1Y" display-name-key="pad1_1Y_disp" description-key="pad1_1Y_desc" of-type="Decimal" usage="bound" required="false" />
+
+    <property name="pad1Button0" display-name-key="pad1Button0_disp" description-key="pad1Button0_desc" of-type="Decimal" usage="bound" required="false" />
+    <property name="pad1Button1" display-name-key="pad1Button1_disp" description-key="pad1Button1_desc" of-type="Decimal" usage="bound" required="false" />
+    <property name="pad1Button2" display-name-key="pad1Button2_disp" description-key="pad1Button2_desc" of-type="Decimal" usage="bound" required="false" />
+    <property name="pad1Button3" display-name-key="pad1Button3_disp" description-key="pad1Button3_desc" of-type="Decimal" usage="bound" required="false" />
+    <property name="pad1Button4" display-name-key="pad1Button4_disp" description-key="pad1Button4_desc" of-type="Decimal" usage="bound" required="false" />
+    <property name="pad1Button5" display-name-key="pad1Button5_disp" description-key="pad1Button5_desc" of-type="Decimal" usage="bound" required="false" />
+    <property name="pad1Button6" display-name-key="pad1Button6_disp" description-key="pad1Button6_desc" of-type="Decimal" usage="bound" required="false" />
+    <property name="pad1Button7" display-name-key="pad1Button7_disp" description-key="pad1Button7_desc" of-type="Decimal" usage="bound" required="false" />
+    <property name="pad1Button8" display-name-key="pad1Button8_disp" description-key="pad1Button8_desc" of-type="Decimal" usage="bound" required="false" />
+    <property name="pad1Button9" display-name-key="pad1Button9_disp" description-key="pad1Button9_desc" of-type="Decimal" usage="bound" required="false" />
+    <property name="pad1Button10" display-name-key="pad1Button10_disp" description-key="pad1Button10_desc" of-type="Decimal" usage="bound" required="false" />
+    <property name="pad1Button11" display-name-key="pad1Button11_disp" description-key="pad1Button11_desc" of-type="Decimal" usage="bound" required="false" />
+    <property name="pad1Button12" display-name-key="pad1Button12_disp" description-key="pad1Button12_desc" of-type="Decimal" usage="bound" required="false" />
+    <property name="pad1Button13" display-name-key="pad1Button13_disp" description-key="pad1Button13_desc" of-type="Decimal" usage="bound" required="false" />
+    <property name="pad1Button14" display-name-key="pad1Button14_disp" description-key="pad1Button14_desc" of-type="Decimal" usage="bound" required="false" />
+    <property name="pad1Button15" display-name-key="pad1Button15_disp" description-key="pad1Button15_desc" of-type="Decimal" usage="bound" required="false" />
+
+    <property name="pad2_index" display-name-key="pad2_index_disp" description-key="pad2_index_desc" of-type="Whole.None" usage="bound" required="false" default-value="1" />
+    <property name="pad2Vibrate" display-name-key="pad2Vibrate_disp" description-key="pad2Vibrate_desc" of-type="Whole.None" usage="bound" required="false" />
+    <property name="pad2_id" display-name-key="pad2_id_disp" description-key="pad2_id_desc" of-type="SingleLine.Text" usage="bound" required="false" />
+    <property name="pad2_connected" display-name-key="pad2_connected_disp" description-key="pad2_connected_desc" of-type="TwoOptions" usage="bound" required="false" />
+
+    <property name="pad2_0X" display-name-key="pad2_0X_disp" description-key="pad2_0X_desc" of-type="Decimal" usage="bound" required="false" />
+    <property name="pad2_0Y" display-name-key="pad2_0Y_disp" description-key="pad2_0Y_desc" of-type="Decimal" usage="bound" required="false" />
+    <property name="pad2_1X" display-name-key="pad2_1X_disp" description-key="pad2_1X_desc" of-type="Decimal" usage="bound" required="false" />
+    <property name="pad2_1Y" display-name-key="pad2_1Y_disp" description-key="pad2_1Y_desc" of-type="Decimal" usage="bound" required="false" />
+
+    <property name="pad2Button0" display-name-key="pad2Button0_disp" description-key="pad2Button0_desc" of-type="Decimal" usage="bound" required="false" />
+    <property name="pad2Button1" display-name-key="pad2Button1_disp" description-key="pad2Button1_desc" of-type="Decimal" usage="bound" required="false" />
+    <property name="pad2Button2" display-name-key="pad2Button2_disp" description-key="pad2Button2_desc" of-type="Decimal" usage="bound" required="false" />
+    <property name="pad2Button3" display-name-key="pad2Button3_disp" description-key="pad2Button3_desc" of-type="Decimal" usage="bound" required="false" />
+    <property name="pad2Button4" display-name-key="pad2Button4_disp" description-key="pad2Button4_desc" of-type="Decimal" usage="bound" required="false" />
+    <property name="pad2Button5" display-name-key="pad2Button5_disp" description-key="pad2Button5_desc" of-type="Decimal" usage="bound" required="false" />
+    <property name="pad2Button6" display-name-key="pad2Button6_disp" description-key="pad2Button6_desc" of-type="Decimal" usage="bound" required="false" />
+    <property name="pad2Button7" display-name-key="pad2Button7_disp" description-key="pad2Button7_desc" of-type="Decimal" usage="bound" required="false" />
+    <property name="pad2Button8" display-name-key="pad2Button8_disp" description-key="pad2Button8_desc" of-type="Decimal" usage="bound" required="false" />
+    <property name="pad2Button9" display-name-key="pad2Button9_disp" description-key="pad2Button9_desc" of-type="Decimal" usage="bound" required="false" />
+    <property name="pad2Button10" display-name-key="pad2Button10_disp" description-key="pad2Button10_desc" of-type="Decimal" usage="bound" required="false" />
+    <property name="pad2Button11" display-name-key="pad2Button11_disp" description-key="pad2Button11_desc" of-type="Decimal" usage="bound" required="false" />
+    <property name="pad2Button12" display-name-key="pad2Button12_disp" description-key="pad2Button12_desc" of-type="Decimal" usage="bound" required="false" />
+    <property name="pad2Button13" display-name-key="pad2Button13_disp" description-key="pad2Button13_desc" of-type="Decimal" usage="bound" required="false" />
+    <property name="pad2Button14" display-name-key="pad2Button14_disp" description-key="pad2Button14_desc" of-type="Decimal" usage="bound" required="false" />
+    <property name="pad2Button15" display-name-key="pad2Button15_disp" description-key="pad2Button15_desc" of-type="Decimal" usage="bound" required="false" />
+
+    <property name="timeout" display-name-key="timeout_disp" description-key="timeout_desc" of-type="Whole.None" usage="input" required="false" default-value="100" />
+
+    <!-- 
+      Property node's of-type attribute can be of-type-group attribute. 
+      Example:
+      <type-group name="numbers">
+        <type>Whole.None</type>
+        <type>Currency</type>
+        <type>FP</type>
+        <type>Decimal</type>
+      </type-group>
+      <property name="sampleProperty" display-name-key="Property_Display_Key" description-key="Property_Desc_Key" of-type-group="numbers" usage="bound" required="true" />
+    -->
+    <resources>
+      <code path="index.ts" order="1"/>
+      <!-- UNCOMMENT TO ADD MORE RESOURCES
+      <css path="css/GamePadComponent.css" order="1" />
+      <resx path="strings/GamePadComponent.1033.resx" version="1.0.0" />
+      -->
+    </resources>
+    <!-- UNCOMMENT TO ENABLE THE SPECIFIED API
+    <feature-usage>
+      <uses-feature name="Device.captureAudio" required="true" />
+      <uses-feature name="Device.captureImage" required="true" />
+      <uses-feature name="Device.captureVideo" required="true" />
+      <uses-feature name="Device.getBarcodeValue" required="true" />
+      <uses-feature name="Device.getCurrentPosition" required="true" />
+      <uses-feature name="Device.pickFile" required="true" />
+      <uses-feature name="Utility" required="true" />
+      <uses-feature name="WebAPI" required="true" />
+    </feature-usage>
+    -->
+  </control>
+</manifest>
