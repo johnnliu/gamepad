@@ -21,10 +21,10 @@ export class GamePadComponent implements ComponentFramework.StandardControl<IInp
 	//private _pad1Vibrate: number = 0
 
 	private _pad1_index: number = 0;
-	private _pad1: Gamepad;
+	private _pad1?: Gamepad;
 
 	private _pad2_index: number = 1;
-	private _pad2: Gamepad;
+	private _pad2?: Gamepad;
 	private _ticks: number = 100;
 
 	/**
@@ -104,8 +104,18 @@ export class GamePadComponent implements ComponentFramework.StandardControl<IInp
 			// var event = new Event('change');
 			// this._container.dispatchEvent(event);
 
-			this._pad1 = gamepads[this._pad1_index] as Gamepad;
-			this._pad2 = gamepads[this._pad2_index] as Gamepad;
+			if (gamepads.length > this._pad1_index) {
+				this._pad1 = gamepads[this._pad1_index] as Gamepad;
+			}
+			else {
+				this._pad1 = undefined;
+			}
+			if (gamepads.length > this._pad2_index) {
+				this._pad2 = gamepads[this._pad2_index] as Gamepad;
+			}
+			else {
+				this._pad1 = undefined;
+			}
 			this.notify();
 			setTimeout(()=>this.tick(), this._ticks);
 			//window.requestAnimationFrame(()=>this.tick());
@@ -125,7 +135,7 @@ export class GamePadComponent implements ComponentFramework.StandardControl<IInp
 		let dirty = false;
 		if (vibrate1) {
 			// this._pad1Vibrate = vibrate;
-			if ('vibrationActuator' in this._pad1) {
+			if (this._pad1 && 'vibrationActuator' in this._pad1) {
 				(this._pad1 as any).vibrationActuator.playEffect("dual-rumble", {
 					startDelay: 0,
 					duration: vibrate1, //this._pad1Vibrate,
@@ -138,7 +148,7 @@ export class GamePadComponent implements ComponentFramework.StandardControl<IInp
 		}
 		if (vibrate2) {
 			// this._pad1Vibrate = vibrate;
-			if ('vibrationActuator' in this._pad2) {
+			if (this._pad2 && 'vibrationActuator' in this._pad2) {
 				(this._pad2 as any).vibrationActuator.playEffect("dual-rumble", {
 					startDelay: 0,
 					duration: vibrate2, //this._pad1Vibrate,
@@ -164,6 +174,8 @@ export class GamePadComponent implements ComponentFramework.StandardControl<IInp
 		}
 	}
 
+	
+
 	/** 
 	 * It is called by the framework prior to a control receiving new data. 
 	 * @returns an object based on nomenclature defined in manifest, expecting object[s] for property marked as “bound” or “output”
@@ -175,55 +187,73 @@ export class GamePadComponent implements ComponentFramework.StandardControl<IInp
 			"pad1_index": this._pad1_index,
 			"pad1_id": this._pad1?.id ?? '',
 			"pad1_connected": this._pad1?.connected ?? false,
-			"pad1_0X": this._pad1?.axes[0],
-			"pad1_0Y": this._pad1?.axes[1],
-			"pad1_1X": this._pad1?.axes[2],
-			"pad1_1Y": this._pad1?.axes[3],
+			"pad1_0X": this.axesValue(this._pad1, 0),
+			"pad1_0Y": this.axesValue(this._pad1, 1),
+			"pad1_1X": this.axesValue(this._pad1, 2),
+			"pad1_1Y": this.axesValue(this._pad1, 3),
 
-			"pad1Button0": this._pad1?.buttons[0].value,
-			"pad1Button1": this._pad1?.buttons[1].value,
-			"pad1Button2": this._pad1?.buttons[2].value,
-			"pad1Button3": this._pad1?.buttons[3].value,
-			"pad1Button4": this._pad1?.buttons[4].value,
-			"pad1Button5": this._pad1?.buttons[5].value,
-			"pad1Button6": this._pad1?.buttons[6].value,
-			"pad1Button7": this._pad1?.buttons[7].value,
-			"pad1Button8": this._pad1?.buttons[8].value,
-			"pad1Button9": this._pad1?.buttons[9].value,
-			"pad1Button10": this._pad1?.buttons[10].value,
-			"pad1Button11": this._pad1?.buttons[11].value,
-			"pad1Button12": this._pad1?.buttons[12].value,
-			"pad1Button13": this._pad1?.buttons[13].value,
-			"pad1Button14": this._pad1?.buttons[14].value,
-			"pad1Button15": this._pad1?.buttons[15].value,
+			"pad1Button0": this.buttonValue(this._pad1, 0),
+			"pad1Button1": this.buttonValue(this._pad1, 1),
+			"pad1Button2": this.buttonValue(this._pad1, 2),
+			"pad1Button3": this.buttonValue(this._pad1, 3),
+			"pad1Button4": this.buttonValue(this._pad1, 4),
+			"pad1Button5": this.buttonValue(this._pad1, 5),
+			"pad1Button6": this.buttonValue(this._pad1, 6),
+			"pad1Button7": this.buttonValue(this._pad1, 7),
+			"pad1Button8": this.buttonValue(this._pad1, 8),
+			"pad1Button9": this.buttonValue(this._pad1, 9),
+			"pad1Button10": this.buttonValue(this._pad1, 10),
+			"pad1Button11": this.buttonValue(this._pad1, 11),
+			"pad1Button12": this.buttonValue(this._pad1, 12),
+			"pad1Button13": this.buttonValue(this._pad1, 13),
+			"pad1Button14": this.buttonValue(this._pad1, 14),
+			"pad1Button15": this.buttonValue(this._pad1, 15),
 
 			"pad2Vibrate": 0,
 			"pad2_index": this._pad2_index,
 			"pad2_id": this._pad2?.id ?? '',
 			"pad2_connected": this._pad2?.connected ?? false,
-			"pad2_0X": this._pad2?.axes[0],
-			"pad2_0Y": this._pad2?.axes[1],
-			"pad2_1X": this._pad2?.axes[2],
-			"pad2_1Y": this._pad2?.axes[3],
+			"pad2_0X": this.axesValue(this._pad2, 0),
+			"pad2_0Y": this.axesValue(this._pad2, 1),
+			"pad2_1X": this.axesValue(this._pad2, 2),
+			"pad2_1Y": this.axesValue(this._pad2, 3),
 
-			"pad2Button0": this._pad2?.buttons[0].value,
-			"pad2Button1": this._pad2?.buttons[1].value,
-			"pad2Button2": this._pad2?.buttons[2].value,
-			"pad2Button3": this._pad2?.buttons[3].value,
-			"pad2Button4": this._pad2?.buttons[4].value,
-			"pad2Button5": this._pad2?.buttons[5].value,
-			"pad2Button6": this._pad2?.buttons[6].value,
-			"pad2Button7": this._pad2?.buttons[7].value,
-			"pad2Button8": this._pad2?.buttons[8].value,
-			"pad2Button9": this._pad2?.buttons[9].value,
-			"pad2Button10": this._pad2?.buttons[10].value,
-			"pad2Button11": this._pad2?.buttons[11].value,
-			"pad2Button12": this._pad2?.buttons[12].value,
-			"pad2Button13": this._pad2?.buttons[13].value,
-			"pad2Button14": this._pad2?.buttons[14].value,
-			"pad2Button15": this._pad2?.buttons[15].value,
+			"pad2Button0":  this.buttonValue(this._pad2, 0),
+			"pad2Button1":  this.buttonValue(this._pad2, 1),
+			"pad2Button2":  this.buttonValue(this._pad2, 2),
+			"pad2Button3":  this.buttonValue(this._pad2, 3),
+			"pad2Button4":  this.buttonValue(this._pad2, 4),
+			"pad2Button5":  this.buttonValue(this._pad2, 5),
+			"pad2Button6":  this.buttonValue(this._pad2, 6),
+			"pad2Button7":  this.buttonValue(this._pad2, 7),
+			"pad2Button8":  this.buttonValue(this._pad2, 8),
+			"pad2Button9":  this.buttonValue(this._pad2, 9),
+			"pad2Button10": this.buttonValue(this._pad2, 10),
+			"pad2Button11": this.buttonValue(this._pad2, 11),
+			"pad2Button12": this.buttonValue(this._pad2, 12),
+			"pad2Button13": this.buttonValue(this._pad2, 13),
+			"pad2Button14": this.buttonValue(this._pad2, 14),
+			"pad2Button15": this.buttonValue(this._pad2, 15),
 
 		};
+	}
+
+	private buttonValue(pad?: Gamepad, buttonIndex?: number): number | undefined {
+		if (pad && buttonIndex !== undefined) {
+			if (pad?.buttons.length > buttonIndex) {
+				return pad?.buttons[buttonIndex].value;
+			}			
+		}
+		return 0;
+	}
+
+	private axesValue(pad?: Gamepad, axesIndex?: number): number | undefined {
+		if (pad && axesIndex !== undefined) {
+			if (pad?.axes.length > axesIndex) {
+				return pad?.axes[axesIndex];
+			}			
+		}
+		return 0;
 	}
 
 	/** 
