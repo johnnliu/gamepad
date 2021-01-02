@@ -13,6 +13,7 @@ A Power Apps Component Framework (PCF) component that exports Gamepad API to Pow
 * Edge, Chrome on Windows PC
 * Xbox One, Xbox One X, Xbox One Series X
 * Andriod Mobile phone browser
+* PS3/4/5 controller on Windows PC
 
 # don't know, but should work (because Gamepad API is pretty old and well supported)
 
