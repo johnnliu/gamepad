@@ -21,8 +21,7 @@ A Power Apps Component Framework (PCF) component that exports Gamepad API to Pow
 * FireFox
 * Safari
 * iPad, Mac
-* Play Station
-* Play Station Controllers 
+* Play Station browser
 
 # FAQ
 
